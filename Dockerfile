@@ -28,6 +28,7 @@ RUN octave --eval "pkg install -forge signal"
 RUN octave --eval "pkg install -forge sockets"
 RUN octave --eval "pkg install -forge splines"
 RUN octave --eval "pkg install -forge netcdf"
+RUN octave --eval "pkg install -forge symbolic"
 
 #Download and make OpenCV-Bindings for Octave
 
