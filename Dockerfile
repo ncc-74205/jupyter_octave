@@ -53,7 +53,7 @@ ADD --chown=1000:100 getstarted.ipynb /home/$NB_USER/
 
 USER root
 
-#fix imshow with additional title so that all images are displayed in the same manner
+#provide imshow with additional title so that all images are displayed in the same manner
 ADD imshow.m /usr/share/octave/4.2.2/m/image/
 
 USER $NB_UID
