@@ -7,9 +7,7 @@ RUN mkdir /home/$NB_USER/tmp
 user root
 
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends octave gnuplot ghostscript liboctave-dev libgdcm3.0 libgdcm-dev cmake libnetcdf-dev libopencv-dev
-RUN apt-get clean
-RUN pkg-config --cflags --libs opencv
+RUN apt-get install -y --no-install-recommends octave gnuplot ghostscript liboctave-dev libgdcm3.0 libgdcm-dev cmake libnetcdf-dev
 
 RUN octave --eval "pkg install -forge control"
 RUN octave --eval "pkg install -forge struct"
@@ -30,15 +28,6 @@ RUN octave --eval "pkg install -forge splines"
 RUN octave --eval "pkg install -forge netcdf"
 RUN octave --eval "pkg install -forge symbolic"
 
-#Download and make OpenCV-Bindings for Octave
-
-RUN cd /tmp && \
-    wget https://github.com/kyamagu/mexopencv/archive/v3.2.0.zip && \
-    unzip v3.2.0.zip -d /usr/local/
-    
-RUN cd /usr/local/mexopencv-3.2.0 && \
-    make WITH_OCTAVE=true
-
 USER $NB_UID
 
 # Install Octave kernel
@@ -54,6 +43,6 @@ ADD --chown=1000:100 getstarted.ipynb /home/$NB_USER/
 USER root
 
 #provide imshow with additional title so that all images are displayed in the same manner
-ADD imshow.m /usr/share/octave/4.2.2/m/image/
+ADD imshow.m /usr/share/octave/5.2.0/m/image/
 
 USER $NB_UID
