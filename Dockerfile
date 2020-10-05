@@ -41,6 +41,7 @@ RUN rm -r /home/$NB_USER/work
 ADD --chown=1000:100 getstarted.ipynb /home/$NB_USER/
 
 USER root
+RUN apt-get install -y --no-install-recommends fonts-freefont-otf
 
 #provide imshow with additional title so that all images are displayed in the same manner
 # ADD imshow.m /usr/share/octave/5.2.0/m/image/
