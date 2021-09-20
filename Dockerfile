@@ -7,9 +7,9 @@ RUN mkdir /home/$NB_USER/tmp
 user root
 
 RUN apt-get update
-RUN apt-get install -y --no-install-recommends octave gnuplot ghostscript liboctave-dev libgdcm3.0 libgdcm-dev cmake libnetcdf-dev
+RUN apt-get install -y --no-install-recommends make octave gnuplot ghostscript liboctave-dev libgdcm3.0 libgdcm-dev cmake libnetcdf-dev
 
-# RUN octave --eval "pkg install -forge control"
+RUN octave --eval "pkg install -forge control"
 RUN octave --eval "pkg install -forge struct"
 RUN octave --eval "pkg install -forge io"
 RUN octave --eval "pkg install -forge statistics"
